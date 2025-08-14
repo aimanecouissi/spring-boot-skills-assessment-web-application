@@ -28,13 +28,15 @@ Explore the application in action by watching the video demonstration available 
 
 > This guide assumes you have JDK, MySQL, and IntelliJ IDEA installed.
 
+To run the application locally, follow these steps:
+
 1. 📂 Import the project into IntelliJ IDEA.
 2. ✏️ Locate the file `src/main/resources/application.properties` and fill in the required values:
    - Database name, username, and password.
    - SMTP username and password from [Mailtrap](https://mailtrap.io/).
    - Client ID and client secret for **Google** and **Facebook** OAuth2 authentication.
 3. 📥 Import the `quizard.sql` file into your MySQL database to load sample data.
-4. 🔎 The default **admin** and **candidate** credentials can be found in `src/main/java/com/aimanecouissi/quizard/seeder/DatabaseSeeder.java`
+4. 🔎 The default **admin** and **candidate** credentials can be found in `src/.../seeder/DatabaseSeeder.java`
 5. ▶️ Build and run the project from IntelliJ IDEA.
 
 ## CONTRIBUTING 🤝
