@@ -4,18 +4,18 @@ Welcome to the Skills Assessment Web Application repository! This project was de
 
 ## FEATURES ✨
 
-- **Theme Exploration**: 📚 Browse and select from a variety of knowledge themes.
-- **Assessments**: 📝 Take interactive quizzes to test your knowledge.
-- **Scoring System**: 📊 Get instant feedback with detailed scores after completing a test.
-- **Certificate Generation**: 🏆 Download personalized certificates upon successful completion.
-- **Admin Dashboard**: ⚙️ Manage themes, tests, and questions with ease.
+- **Theme Exploration** 📚 Browse and select from a variety of knowledge themes.
+- **Assessments** 📝 Take interactive quizzes to test your knowledge.
+- **Scoring System** 📊 Get instant feedback with detailed scores after completing a test.
+- **Certificate Generation** 🏆 Download personalized certificates upon successful completion.
+- **Admin Dashboard** ⚙️ Manage themes, tests, and questions with ease.
 
 ## TECHNOLOGIES 🚀
 
-- **Spring Boot**: 🌐 Java-based framework for building production-ready web applications.
-- **MySQL**: 🗄️ Relational database management system for data storage.
-- **OAuth2**: 🔐 Secure authentication with Google and Facebook.
-- **IntelliJ IDEA**: 🛠️ IDE used for development.
+- **Spring Boot** 🌐 Java-based framework for building production-ready web applications.
+- **MySQL** 🗄️ Relational database management system for data storage.
+- **OAuth2** 🔐 Secure authentication with Google and Facebook.
+- **IntelliJ IDEA** 🛠️ IDE used for development.
 
 ## DEMO 🎬
 
