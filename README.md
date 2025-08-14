@@ -2,7 +2,7 @@
 
 Welcome to the Skills Assessment Web Application repository! This project was developed as part of my 4th-year capstone project. It offers an engaging platform where users can explore various themes, take assessments, and receive personalized certificates upon completion. The application is built with Spring Boot and MySQL, delivering a robust backend and seamless performance.
 
-## FEATURES 🌟
+## FEATURES ✨
 
 - **Theme Exploration**: 📚 Browse and select from a variety of knowledge themes.
 - **Assessments**: 📝 Take interactive quizzes to test your knowledge.
@@ -10,7 +10,7 @@ Welcome to the Skills Assessment Web Application repository! This project was de
 - **Certificate Generation**: 🏆 Download personalized certificates upon successful completion.
 - **Admin Dashboard**: ⚙️ Manage themes, tests, and questions with ease.
 
-## TECHNOLOGIES 💻
+## TECHNOLOGIES 🚀
 
 - **Spring Boot**: 🌐 Java-based framework for building production-ready web applications.
 - **MySQL**: 🗄️ Relational database management system for data storage.
