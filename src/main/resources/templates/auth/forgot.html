@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(pageTitle='Forgot Password')}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="body-padding min-vh-100 d-flex justify-content-center">
+    <section class="container py-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-login">
+                <div class="text-center mb-3"><i class="ri-key-line key-icon"></i></div>
+                <h1 class="text-center">Reset Password</h1>
+                <p class="mb-4 text-center">No worries, we'll send you reset instructions.</p>
+                <div class="alert alert-success rounded-0 mb-3 small" th:if="${param.success}">
+                    We sent a link to your email address.
+                </div>
+                <div class="alert alert-danger rounded-0 mb-3 small" th:if="${param.error}">
+                    An error occurred while sending the password reset link.
+                </div>
+                <form autocomplete="off" method="post" th:action="@{/password/forgot}" th:object="${forgotDto}">
+                    <label class="form-label" for="email">Email Address <span
+                            class="fw-medium text-danger">*</span></label>
+                    <input autofocus class="form-control form-control-lg" id="email" placeholder="Email address"
+                           required th:field="*{email}" type="email"/>
+                    <div class="d-grid my-3">
+                        <input class="btn btn-lg btn-primary" type="submit" value="Send"/>
+                    </div>
+                </form>
+                <a class="text-center d-block" th:href="@{/signin}"><i class="ri-arrow-left-line me-2"></i>Back to
+                    sign in</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+</body>
+</html>

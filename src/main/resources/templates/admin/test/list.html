@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(pageTitle='Test Management')}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="body-padding vh-100">
+    <div class="container py-custom">
+        <div th:replace="~{fragments/sidebar :: sidebar(currentTab='tests')}"></div>
+        <div class="content ps-lg-5 ps-2 pt-4 pt-lg-0">
+            <h3>Test Management</h3>
+            <p class="mb-4">Easily add, remove or edit tests while personalize them to your preferences.</p>
+            <form autocomplete="off" class="mb-3" method="get" th:action="@{/admin/test}">
+                <label class="d-none" for="search"></label>
+                <div class="form-search">
+                    <div class="input-group">
+                        <input class="form-control form-control-lg form-control-search" id="search" name="search"
+                               placeholder="Search for a test" required
+                               th:value="${search}" type="search"/>
+                        <button class="btn btn-primary btn-lg" type="submit">Search</button>
+                    </div>
+                    <i class="ri-search-line"></i>
+                </div>
+            </form>
+            <div class="row gx-3 gy-4 mb-5">
+                <div class="col-lg-4 col-md-4 col-6">
+                    <a class="hover-effect d-block border-dashed rounded-0 ratio ratio-4x3 mb-3"
+                       th:href="@{/admin/test/add}">
+                        <div class="w-100 h-100 d-flex align-items-center justify-content-center">
+                            <span class="d-inline-block text-gray display-1">+</span>
+                        </div>
+                    </a>
+                    <h6 class="mb-1">Add new test</h6>
+                    <p class="small mb-0">Click above to add a new test.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-6" data-aos="fade-up" th:each="test : ${tests}">
+                    <div class="test bg-secondary rounded-0 position-relative overflow-hidden ratio ratio-4x3 mb-3">
+                        <img alt="" class="w-100 h-100 object-fit-cover" src=""
+                             th:alt="${test.key.name}" th:src="@{${test.key.imagePath}}">
+                        <div class="test-btn-wrapper">
+                            <a class="text-white" th:href="@{/admin/test/{id}(id=${test.key.id})}">View Test</a>
+                        </div>
+                    </div>
+                    <h6 class="text-truncate mb-1" th:text="${test.key.name}" th:title="${test.key.name}"></h6>
+                    <p class="small text-truncate mb-0"
+                       th:text="${test.value} + ' Questions • ' + ${test.key.theme.name}"></p>
+                </div>
+            </div>
+            <nav th:if="${pages > 1}">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{/admin/test(page=1, search=${search})}"
+                           th:if="${currentPage > 1}"><i class="ri-skip-left-line"></i></a>
+                        <a class="page-link" th:unless="${currentPage > 1}"><i class="ri-skip-left-line"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{/admin/test(page=${currentPage - 1}, search=${search})}"
+                           th:if="${currentPage > 1}"><i class="ri-arrow-left-s-line"></i></a>
+                        <a class="page-link" th:unless="${currentPage > 1}"><i class="ri-arrow-left-s-line"></i></a>
+                    </li>
+                    <li class="page-item" th:classappend="${currentPage == i} ? 'active' : ''"
+                        th:each="i: ${#numbers.sequence(1, pages)}">
+                        <a class="page-link" th:href="@{/admin/test(page=${i}, search=${search})}"
+                           th:text="${i}"></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{/admin/test(page=${currentPage + 1}, search=${search})}"
+                           th:if="${currentPage < pages}"><i class="ri-arrow-right-s-line"></i></a>
+                        <a class="page-link" th:unless="${currentPage < pages}"><i
+                                class="ri-arrow-right-s-line"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{/admin/test(page=${pages}, search=${search})}"
+                           th:if="${currentPage < pages}"><i class="ri-skip-right-line"></i></a>
+                        <a class="page-link" th:unless="${currentPage < pages}"><i class="ri-skip-right-line"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+<div th:replace="~{fragments/toastr :: toastr}"></div>
+</body>
+</html>

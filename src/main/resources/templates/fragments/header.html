@@ -1,0 +1,53 @@
+<html lang="en" xmlns:sec="http://thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg bg-white fixed-top shadow-sm py-2">
+        <div class="container">
+            <a class="navbar-brand me-5" th:href="@{/}">Quizard</a>
+            <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
+                    type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-lg-4">
+                    <li class="nav-item">
+                        <!--/*@thymesVar id="activePage" type="java.lang.String"*/-->
+                        <a th:class="${activePage == 'Home'} ? 'active nav-link' : 'nav-link'" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <!--/*@thymesVar id="activePage" type="java.lang.String"*/-->
+                        <a th:class="${activePage == 'About'} ? 'active nav-link' : 'nav-link'" th:href="@{/about}">About</a>
+                    </li>
+                </ul>
+                <div class="d-flex mb-2 mb-lg-0 gap-2" sec:authorize="isAnonymous()">
+                    <a class="btn btn-primary nav-btn order-lg-1" th:href="@{/signup}">Sign up</a>
+                    <a class="btn btn-secondary nav-btn order-lg-0" th:href="@{/signin}">Sign in</a>
+                </div>
+                <ul class="navbar-nav mb-2 mb-lg-0" sec:authorize="isAuthenticated()">
+                    <li class="nav-item dropdown">
+                        <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                           role="button">
+                            <span class="me-2" sec:authentication="principal.fullName"></span>
+                        </a>
+                        <ul class="dropdown-menu rounded-0">
+                            <li sec:authorize="hasRole('ADMIN')">
+                                <a class="dropdown-item" th:href="@{/admin/test}">Dashboard</a>
+                            </li>
+                            <li sec:authorize="hasRole('USER')">
+                                <a class="dropdown-item" th:href="@{/user/results}">Dashboard</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+                            <li>
+                                <a class="dropdown-item logout-link" href="">Sign out</a>
+                            </li>
+                            <form method="post" name="logoutForm" th:action="@{/logout}" th:hidden="true"></form>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+</html>

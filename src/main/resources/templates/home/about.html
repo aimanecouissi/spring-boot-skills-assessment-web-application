@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(pageTitle='About')}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="body-padding">
+    <section class="py-5">
+        <div class="container text-center">
+            <h6 class="text-uppercase small text-black-50">About Quizard</h6>
+            <h1>Empowering Online Quizzing for Success</h1>
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <p class="mb-0">Launched in 2023, Quizard is your one-stop destination for interactive and
+                        knowledge-packed quizzing experiences to enhance your learning journey and boost your academic
+                        success.</p>
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="col-5">
+                    <div class="h-100">
+                        <img alt="about-1"
+                             class="img-fluid object-fit-cover h-100 rounded-start-0" src=""
+                             th:src="@{/images/about/about-1.png}"/>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="h-100">
+                        <img alt="about-2" class="img-fluid object-fit-cover h-100"
+                             src="" th:src="@{/images/about/about-2.png}"/>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="h-100">
+                        <img alt="about-3"
+                             class="img-fluid object-fit-cover h-100 rounded-end-0" src=""
+                             th:src="@{/images/about/about-3.png}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pb-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-md-6">
+                    <h3 class="mb-3">Our History</h3>
+                    <p class="text-secondary-emphasis text-justify mb-0">
+                        Quizard, founded in 2023, set out with a vision to revolutionize online learning. Our goal was
+                        to create an engaging platform for online tests and quizzes that would make learning accessible
+                        to all. Since
+                        then, we have helped millions of learners worldwide improve their skills and achieve success
+                        through our innovative approach. Join us as we continue to shape the future of online quizzing
+                        and empower learners
+                        to excel in their educational journey!
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mb-3">Our Mission</h3>
+                    <p class="text-secondary-emphasis text-justify mb-0">
+                        At Quizard, our mission is simple: to empower learners through innovative online testing and
+                        quizzing. We believe in universal access to effective educational tools. Our platform equips
+                        students, teachers,
+                        and lifelong learners with the resources they need to succeed. We foster a positive and
+                        inclusive learning environment that encourages curiosity and growth. Quizard is here to help
+                        learners unlock their full
+                        potential.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-purple py-5">
+        <div class="container">
+            <h3 class="text-white text-center">A Compilation of Reviews and Testimonials</h3>
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-6">
+                    <p class="text-light text-center mb-0">Our clients' reviews speak volumes about the quality of our
+                        services. See for yourself what people are saying about us.</p>
+                </div>
+            </div>
+            <div class="reviews owl-carousel owl-theme">
+                <div class="p-4 bg-white rounded-0">
+                    <div class="mb-4">
+                        <p class="text-warning fs-3 mb-2"><i class="ri-star-fill"></i> <i class="ri-star-fill"></i> <i
+                                class="ri-star-fill"></i> <i class="ri-star-fill"></i> <i class="ri-star-fill"></i></p>
+                        <p class="text-secondary-emphasis">Quizard is an online test app with an intuitive interface. It
+                            offers diverse quizzes and tests, providing valuable feedback for better learning.</p>
+                    </div>
+                    <div class="d-flex align-items-start gap-4">
+                        <img alt="review-1" class="rounded-0" src="" th:src="@{/images/reviews/review-1.jpg}"/>
+                        <div>
+                            <h5 class="fw-medium mb-0">Ayoub Zelbani</h5>
+                            <p class="mb-0">IT Engineering Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-0">
+                    <div class="mb-4">
+                        <p class="text-warning fs-3 mb-2"><i class="ri-star-fill"></i> <i class="ri-star-fill"></i> <i
+                                class="ri-star-fill"></i> <i class="ri-star-fill"></i> <i class="ri-star-fill"></i></p>
+                        <p class="text-secondary-emphasis">With Quizard, online tests and quizzes become engaging. Its
+                            user-friendly design, vast question bank, and performance analysis enhance the learning
+                            experience.</p>
+                    </div>
+                    <div class="d-flex align-items-start gap-4">
+                        <img alt="review-2" class="rounded-0" src="" th:src="@{/images/reviews/review-2.jpg}"/>
+                        <div>
+                            <h5 class="fw-medium mb-0">Ilyass Eljabri</h5>
+                            <p class="mb-0">IT Engineering Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 bg-white rounded-0">
+                    <div class="mb-4">
+                        <p class="text-warning fs-3 mb-2"><i class="ri-star-fill"></i> <i class="ri-star-fill"></i> <i
+                                class="ri-star-fill"></i> <i class="ri-star-fill"></i> <i class="ri-star-fill"></i></p>
+                        <p class="text-secondary-emphasis">Quizard simplifies online tests. The platform's clean
+                            interface, extensive content, and insightful feedback make it a valuable tool for
+                            students.</p>
+                    </div>
+                    <div class="d-flex align-items-start gap-4">
+                        <img alt="review-3" class="rounded-0" src="" th:src="@{/images/reviews/review-3.jpg}"/>
+                        <div>
+                            <h5 class="fw-medium mb-0">Hajar Nait Bakkou</h5>
+                            <p class="mb-0">IT Engineering Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h2 class="text-center text-lg-start mb-4 mb-lg-0">Frequently Asked Questions 🤔</h2>
+                </div>
+                <div class="offset-lg-1 col-lg-7">
+                    <div class="accordion accordion-flush" id="accordionFlush">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button aria-controls="flush-collapseOne" aria-expanded="false"
+                                        class="accordion-button collapsed"
+                                        data-bs-target="#flush-collapseOne" data-bs-toggle="collapse"
+                                        type="button">
+                                    How many questions are there in each test on Quizard?
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse" data-bs-parent="#accordionFlush"
+                                 id="flush-collapseOne">
+                                <div class="accordion-body">Each test on Quizard consists of 10 questions.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button aria-controls="flush-collapseTwo" aria-expanded="false"
+                                        class="accordion-button collapsed"
+                                        data-bs-target="#flush-collapseTwo" data-bs-toggle="collapse"
+                                        type="button">
+                                    How much time do I have to complete each question in a test on Quizard?
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse" data-bs-parent="#accordionFlush"
+                                 id="flush-collapseTwo">
+                                <div class="accordion-body">You have 2 minutes to complete each question in a test on
+                                    Quizard.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button aria-controls="flush-collapseThree" aria-expanded="false"
+                                        class="accordion-button collapsed"
+                                        data-bs-target="#flush-collapseThree" data-bs-toggle="collapse"
+                                        type="button">
+                                    Can I extend the time limit for a question in a test on Quizard?
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse" data-bs-parent="#accordionFlush"
+                                 id="flush-collapseThree">
+                                <div class="accordion-body">No, the time limit for each question in a test on Quizard is
+                                    fixed at 2 minutes and cannot be extended.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button aria-controls="flush-collapseFour" aria-expanded="false"
+                                        class="accordion-button collapsed"
+                                        data-bs-target="#flush-collapseFour" data-bs-toggle="collapse"
+                                        type="button">
+                                    Can I review my answers after completing a test on Quizard?
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse" data-bs-parent="#accordionFlush"
+                                 id="flush-collapseFour">
+                                <div class="accordion-body">No, once you have completed a test on Quizard and submitted
+                                    your answers, you will not be able to review or change your answers.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button aria-controls="flush-collapseFive" aria-expanded="false"
+                                        class="accordion-button collapsed"
+                                        data-bs-target="#flush-collapseFive" data-bs-toggle="collapse"
+                                        type="button">
+                                    Can I skip a question and come back to it later during a test on Quizard?
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse" data-bs-parent="#accordionFlush"
+                                 id="flush-collapseFive">
+                                <div class="accordion-body">No, once you have moved past a question in a test on
+                                    Quizard, you will not be able to go back and change your answer. All questions must
+                                    be answered in sequence.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button aria-controls="flush-collapseSix" aria-expanded="false"
+                                        class="accordion-button collapsed"
+                                        data-bs-target="#flush-collapseSix" data-bs-toggle="collapse"
+                                        type="button">
+                                    Can I change my answer to a question after submitting it in a test on Quizard?
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse" data-bs-parent="#accordionFlush"
+                                 id="flush-collapseSix">
+                                <div class="accordion-body">No, once you have submitted your answer to a question in a
+                                    test on Quizard, you cannot change it.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button aria-controls="flush-collapseSeven" aria-expanded="false"
+                                        class="accordion-button collapsed"
+                                        data-bs-target="#flush-collapseSeven" data-bs-toggle="collapse"
+                                        type="button">
+                                    How can I access my test results on Quizard?
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse" data-bs-parent="#accordionFlush"
+                                 id="flush-collapseSeven">
+                                <div class="accordion-body">Once you have completed a test on Quizard, your results will
+                                    be displayed on the screen. You can also view your test history and results in your
+                                    user profile.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button aria-controls="flush-collapseEight" aria-expanded="false"
+                                        class="accordion-button collapsed"
+                                        data-bs-target="#flush-collapseEight" data-bs-toggle="collapse"
+                                        type="button">
+                                    Can I create my own tests or quizzes on Quizard?
+                                </button>
+                            </h2>
+                            <div class="accordion-collapse collapse" data-bs-parent="#accordionFlush"
+                                 id="flush-collapseEight">
+                                <div class="accordion-body">Currently, Quizard only offers pre-made tests and quizzes.
+                                    However, we are working on adding a feature to allow users to create their own tests
+                                    in the future.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+</body>
+</html>

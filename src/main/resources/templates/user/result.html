@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(pageTitle=${userResultDto.test.name})}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="body-padding min-vh-100 bg-gray">
+    <section class="py-custom">
+        <div class="container">
+            <div class="bg-white p-4 border rounded-0">
+                <div class="border-bottom border-1 border-color-custom d-flex align-items-center justify-content-between mb-4 pb-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="ratio ratio-16x9 flex-shrink-0 rounded-0 bg-secondary" style="max-width: 110px;">
+                            <img alt="" class="w-100 h-100 object-fit-cover" src="" th:alt="${userResultDto.test.name}"
+                                 th:src="@{${userResultDto.test.imagePath}}">
+                        </div>
+                        <h5 class="flex-shrink-0 mb-0" th:text="${userResultDto.test.name}"></h5>
+                    </div>
+                    <div th:if="${userResultDto.score >= 80}">
+                        <a class="btn nav-btn btn-outline-secondary rounded-0"
+                           th:href="@{/user/certificate/{id}(id=${userResultDto.id})}">Share<i
+                                class="ri-share-box-line ms-1"></i></a>
+                    </div>
+                    <div th:if="${userResultDto.score < 80}">
+                        <a class="btn nav-btn btn-outline-secondary rounded-0"
+                           th:href="@{/user/test/{id}(id=${userResultDto.test.id})}">Retry<i
+                                class="ri-arrow-go-back-line ms-1"></i></a>
+                    </div>
+                </div>
+                <div th:if="${userResultDto.score >= 80}">
+                    <h4>&#127881; Congratulations. You passed!</h4>
+                    <p class="text-grey desc">You have successfully completed the test. You can now click on finish.</p>
+                </div>
+                <div th:if="${userResultDto.score < 80}">
+                    <h4>&#128532; Unfortunately, you failed.</h4>
+                    <p class="text-grey desc">Unfortunately, you did not pass the test. You can try again later.</p>
+                </div>
+                <table class="results">
+                    <tr>
+                        <td class="fw-medium"><i class="ri-list-check me-2"></i>Total Question</td>
+                        <td>:</td>
+                        <td th:text="${userResultDto.questionsCount}"></td>
+                    </tr>
+                    <tr>
+                        <td class="fw-medium"><i class="ri-award-line me-2"></i>Your Score</td>
+                        <td>:</td>
+                        <td th:text="${userResultDto.score} + '%'"></td>
+                    </tr>
+                    <tr>
+                        <td class="fw-medium"><i class="ri-focus-3-line me-2"></i>Passing Score</td>
+                        <td>:</td>
+                        <td>80%</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-medium"><i class="ri-checkbox-line me-2"></i>Correct Answers</td>
+                        <td>:</td>
+                        <td th:text="${userResultDto.answersCount}"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="text-end">
+                <a class="btn btn-primary rounded-0 nav-btn px-3 mt-3" th:href="@{/}">Finish</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+<script th:if="${userResultDto.score >= 80}" th:src="@{/js/confetti.js}"></script>
+</body>
+</html>

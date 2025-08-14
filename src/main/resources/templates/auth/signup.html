@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(pageTitle='Sign up')}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="body-padding min-vh-100">
+    <section class="py-6">
+        <div class="container">
+            <div class="row justify-content-center">
+                <h1 class="text-center mb-custom">Sign up to <span class="logo">Quizard</span></h1>
+                <div class="col-login">
+                    <a class="btn btn-secondary btn-social px-3 mb-2" th:href="@{/oauth2/authorization/google}">
+                        <img alt="google"
+                             src="https://img.icons8.com/color/48/null/google-logo.png"
+                             style="width: 24px; height: 24px;"/>
+                        <div class="text-center w-100">Continue with Google</div>
+                    </a>
+                    <a class="btn btn-secondary btn-social px-3 mb-2" th:href="@{/oauth2/authorization/facebook}">
+                        <img alt="facebook"
+                             src="https://img.icons8.com/color/48/null/facebook-new.png"
+                             style="width: 24px; height: 24px;"/>
+                        <div class="text-center w-100">Continue with Facebook</div>
+                    </a>
+                    <div class="or-divider mb-2">
+                        <span>or</span>
+                    </div>
+                    <form autocomplete="off" method="post" th:action="@{/signup}" th:object="${userDto}">
+                        <div class="row mb-2 g-2">
+                            <div class="col-6">
+                                <label class="d-block">
+                                    <input autofocus class="form-control form-control-lg"
+                                           placeholder="First name" required th:field="*{firstName}" type="text"/>
+                                </label>
+                            </div>
+                            <div class="col-6">
+                                <label class="d-block">
+                                    <input class="form-control form-control-lg" placeholder="Last name"
+                                           required th:field="*{lastName}" type="text"/>
+                                </label>
+                            </div>
+                        </div>
+                        <label class="d-block">
+                            <input class="form-control form-control-lg mb-2" placeholder="Email address"
+                                   required
+                                   th:field="*{email}" type="email"/>
+                        </label>
+                        <label class="d-block">
+                            <input class="form-control form-control-lg" onkeyup="checkPasswordStrength()"
+                                   placeholder="Password"
+                                   required th:field="*{password}" type="password"/>
+                        </label>
+                        <div class="indicator mt-2">
+                            <span class="weak"></span>
+                            <span class="medium"></span>
+                            <span class="strong"></span>
+                        </div>
+                        <div class="d-grid my-3">
+                            <input class="btn btn-lg btn-primary" type="submit" value="Sign up"/>
+                        </div>
+                        <p class="text-dark text-center mt-4 mb-0">Already have an account? <a th:href="@{/signin}">Sign
+                            in</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+<div th:replace="~{fragments/toastr :: toastr}"></div>
+</body>
+</html>

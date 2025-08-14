@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(pageTitle='Account Settings')}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="body-padding vh-100">
+    <div class="container py-custom">
+        <div th:replace="~{fragments/sidebar :: sidebar(currentTab='settings')}"></div>
+        <div class="content ps-lg-5 ps-2 pt-4 pt-lg-0">
+            <h3>Account Settings</h3>
+            <p class="mb-4">Personalize your account with easy settings adjustments.</p>
+            <div class="row gx-4 gy-5">
+                <div class="col-lg-6">
+                    <h5 class="mb-3">Personal Information</h5>
+                    <form autocomplete="off" method="post" th:action="@{/user/settings/name}" th:object="${nameDto}">
+                        <label class="form-label" for="firstName">First Name <span
+                                class="fw-medium text-danger">*</span></label>
+                        <input class="form-control form-control-lg mb-3" id="firstName"
+                               placeholder="Enter your first name here" required th:field="*{firstName}" type="text"/>
+                        <label class="form-label" for="lastName">Last Name <span class="fw-medium text-danger">*</span></label>
+                        <input class="form-control form-control-lg mb-3" id="lastName"
+                               placeholder="Enter your last name here" required th:field="*{lastName}" type="text"/>
+                        <div class="d-grid">
+                            <input class="btn btn-primary btn-lg" type="submit" value="Save"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6">
+                    <h5 class="mb-3">Reset Password</h5>
+                    <form autocomplete="off" method="post" th:action="@{/user/settings/password}"
+                          th:object="${passwordDto}">
+                        <label class="form-label" for="password">New Password <span
+                                class="fw-medium text-danger">*</span></label>
+                        <input class="form-control form-control-lg mb-3" id="password"
+                               placeholder="Enter new password here" required th:field="*{newPassword}"
+                               type="password"/>
+                        <label class="form-label" for="confirmPassword">Confirm Password <span
+                                class="fw-medium text-danger">*</span></label>
+                        <input class="form-control form-control-lg mb-3" id="confirmPassword"
+                               oninput="checkPasswordMatch(this);" placeholder="Confirm new password here" required
+                               type="password"/>
+                        <div class="d-grid">
+                            <input class="btn btn-primary btn-lg" type="submit" value="Reset"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+<div th:replace="~{fragments/toastr :: toastr}"></div>
+</body>
+</html>
