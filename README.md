@@ -9,15 +9,12 @@ Welcome to the Skills Assessment Web Application repository! This project was de
 - **Scoring System**: 📊 Get instant feedback with detailed scores after completing a test.
 - **Certificate Generation**: 🏆 Download personalized certificates upon successful completion.
 - **Admin Dashboard**: ⚙️ Manage themes, tests, and questions with ease.
-- **User Performance Insights**: 📈 View performance statistics to track progress.
-- **OAuth2 Login**: 🔐 Sign in using Google or Facebook accounts.
 
 ## TECHNOLOGIES 💻
 
 - **Spring Boot**: 🌐 Java-based framework for building production-ready web applications.
 - **MySQL**: 🗄️ Relational database management system for data storage.
 - **OAuth2**: 🔐 Secure authentication with Google and Facebook.
-- **Mailtrap**: 📧 SMTP testing service for sending verification and notification emails.
 - **IntelliJ IDEA**: 🛠️ IDE used for development.
 
 ## DEMO 🎬
