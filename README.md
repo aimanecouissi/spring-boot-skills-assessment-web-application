@@ -1,6 +1,6 @@
 # SKILLS ASSESSMENT WEB APPLICATION 📝
 
-Welcome to the Skills Assessment Web Application repository! This project was developed as part of my 4th-year capstone project. It offers an engaging platform where users can explore various themes, take assessments, and receive personalized certificates upon completion. The application is built with Spring Boot and MySQL, delivering a robust backend and seamless performance. It supports OAuth2 authentication with Facebook and Google, allowing users to log in quickly and securely.
+Welcome to the Skills Assessment Web Application repository! This project was developed as part of my 4th-year capstone project. It offers an engaging platform where users can explore various themes, take assessments, and receive personalized certificates upon completion. The application is built with Spring Boot and MySQL, delivering a robust backend and seamless performance.
 
 ## FEATURES 🌟
 
