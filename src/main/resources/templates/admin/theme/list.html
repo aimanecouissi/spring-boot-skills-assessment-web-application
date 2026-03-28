@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(pageTitle='Theme Management')}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="body-padding vh-100">
+    <div class="container py-custom">
+        <div th:replace="~{fragments/sidebar :: sidebar(currentTab='themes')}"></div>
+        <div class="content ps-lg-5 ps-2 pt-4 pt-lg-0">
+            <h3>Theme Management</h3>
+            <p class="mb-4">Easily add, remove or edit themes while personalize them to your preferences.</p>
+            <a class="theme border-dashed rounded-0 p-4 mb-2" th:href="@{/admin/theme/add}">
+                <p class="text-center mb-0"><i class="ri-add-line me-2"></i>Click here to add a new theme</p>
+            </a>
+            <a class="theme border rounded-0 p-4 mb-2" data-aos="fade-up" th:each="theme : ${themes}"
+               th:href="@{/admin/theme/edit/{id}(id=${theme.id})}">
+                <h6 class="mb-1" th:text="${theme.name}"></h6>
+                <p class="mb-0" th:text="${theme.description}"></p>
+            </a>
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+<div th:replace="~{fragments/toastr :: toastr}"></div>
+</body>
+</html>

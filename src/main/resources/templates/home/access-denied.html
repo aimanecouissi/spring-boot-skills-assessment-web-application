@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(pageTitle='Access Denied')}"></div>
+<body>
+<div class="min-vh-100 d-flex align-items-center justify-content-center">
+    <div th:replace="~{fragments/header :: header}"></div>
+    <section class="py-5">
+        <h1 class="display-1 text-primary text-center fw-medium">403</h1>
+        <p class="lead text-black text-center mb-0">Access to this resource on the server is denied!</p>
+    </section>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+</body>
+</html>

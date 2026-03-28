@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(pageTitle='Reset Password')}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="body-padding min-vh-100 d-flex align-items-center justify-content-center">
+    <section class="container py-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-login">
+                <div class="text-center mb-3"><i class="ri-key-line key-icon"></i></div>
+                <h1 class="text-center">Reset Password</h1>
+                <p class="mb-4 text-center">Enter your new account password below.</p>
+                <!--/*@thymesVar id="success" type="java.lang.String"*/-->
+                <div class="alert alert-success rounded-0 mb-3 small" th:if="${success}" th:text="${success}"></div>
+                <div class="alert alert-danger rounded-0 mb-3 small" th:if="${error}" th:text="${error}"
+                     th:unless="${success}">
+                </div>
+                <form autocomplete="off" method="post" th:action="@{/password/reset}" th:object="${resetDto}">
+                    <input th:field="*{token}" type="hidden">
+                    <label class="form-label" for="newPassword">New Password <span
+                            class="fw-medium text-danger">*</span></label>
+                    <input autofocus class="form-control form-control-lg mb-3" id="newPassword"
+                           placeholder="New password"
+                           required th:field="*{newPassword}" type="password"/>
+                    <label class="form-label" for="confirmPassword">Confirm Password <span
+                            class="fw-medium text-danger">*</span></label>
+                    <input class="form-control form-control-lg mb-3" id="confirmPassword"
+                           oninput="checkPasswordMatch(this);"
+                           placeholder="Confirm password" required type="password"/>
+                    <div class="d-grid mb-3">
+                        <input class="btn btn-lg btn-primary" type="submit" value="Reset"/>
+                    </div>
+                </form>
+                <a class="text-center d-block" th:href="@{/signin}"><i class="ri-arrow-left-line me-2"></i>Back to
+                    sign in</a>
+            </div>
+        </div>
+    </section>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+</body>
+</html>

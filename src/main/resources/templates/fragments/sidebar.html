@@ -1,0 +1,33 @@
+<html lang="en" xmlns:sec="http://thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<div class="sidebar" th:fragment="sidebar(currentTab)">
+    <h3 class="ms-3">Dashboard</h3>
+    <th:block sec:authorize="hasRole('ADMIN')">
+        <a th:class="${currentTab == 'tests'} ? 'active' : ''" th:href="@{/admin/test}">
+            <span class="d-inline-flex align-items-center justify-content-between w-100">Test Management<i
+                    class="ri-arrow-right-s-line"></i></span>
+        </a>
+        <a th:class="${currentTab == 'themes'} ? 'active' : ''" th:href="@{/admin/theme}">
+            <span class="d-inline-flex align-items-center justify-content-between w-100">Theme Management<i
+                    class="ri-arrow-right-s-line"></i></span>
+        </a>
+        <a th:class="${currentTab == 'results'} ? 'active' : ''" th:href="@{/admin/results}">
+            <span class="d-inline-flex align-items-center justify-content-between w-100">Results Database<i
+                    class="ri-arrow-right-s-line"></i></span>
+        </a>
+        <a th:class="${currentTab == 'settings'} ? 'active' : ''" th:href="@{/admin/settings}">
+            <span class="d-inline-flex align-items-center justify-content-between w-100">Account Settings<i
+                    class="ri-arrow-right-s-line"></i></span>
+        </a>
+    </th:block>
+    <th:block sec:authorize="hasRole('USER')">
+        <a th:class="${currentTab == 'results'} ? 'active' : ''" th:href="@{/user/results}">
+            <span class="d-inline-flex align-items-center justify-content-between w-100">Results Database<i
+                    class="ri-arrow-right-s-line"></i></span>
+        </a>
+        <a th:class="${currentTab == 'settings'} ? 'active' : ''" th:href="@{/user/settings}">
+            <span class="d-inline-flex align-items-center justify-content-between w-100">Account Settings<i
+                    class="ri-arrow-right-s-line"></i></span>
+        </a>
+    </th:block>
+</div>
+</html>

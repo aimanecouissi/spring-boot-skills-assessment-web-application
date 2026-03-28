@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(pageTitle='Sign in')}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="body-padding min-vh-100">
+    <section class="py-6">
+        <div class="container">
+            <div class="row justify-content-center">
+                <h1 class="text-center mb-custom">Sign in to <span class="logo">Quizard</span></h1>
+                <div class="col-login">
+                    <a class="btn btn-secondary btn-social px-3 mb-2" th:href="@{/oauth2/authorization/google}">
+                        <img alt="google"
+                             src="https://img.icons8.com/color/48/null/google-logo.png"
+                             style="width: 24px; height: 24px;"/>
+                        <div class="text-center w-100">Continue with Google</div>
+                    </a>
+                    <a class="btn btn-secondary btn-social px-3 mb-2" th:href="@{/oauth2/authorization/facebook}">
+                        <img alt="facebook"
+                             src="https://img.icons8.com/color/48/null/facebook-new.png"
+                             style="width: 24px; height: 24px;"/>
+                        <div class="text-center w-100">Continue with Facebook</div>
+                    </a>
+                    <div class="or-divider mb-2">
+                        <span>or</span>
+                    </div>
+                    <div class="alert alert-danger rounded-0 mb-2 small" th:if="${param.error}">
+                        Invalid email or password.
+                    </div>
+                    <form autocomplete="off" method="post" th:action="@{/signin}">
+                        <label class="d-block">
+                            <input autofocus class="form-control form-control-lg mb-2" name="email"
+                                   placeholder="Email address" required type="email"/>
+                        </label>
+                        <label class="d-block">
+                            <input class="form-control form-control-lg mb-3" name="password" placeholder="Password"
+                                   required type="password"/>
+                        </label>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-6 text-start">
+                                <div class="d-flex align-items-center gap-2">
+                                    <input class="form-check-input m-0" id="remember-me" name="remember-me"
+                                           type="checkbox"/>
+                                    <label for="remember-me">Remember me</label>
+                                </div>
+                            </div>
+                            <!--<div class="col-6 text-end">
+                                <a th:href="@{/password/forgot}">Forgot password?</a>
+                            </div>-->
+                        </div>
+                        <div class="d-grid">
+                            <input class="btn btn-lg btn-primary" type="submit" value="Sign in"/>
+                        </div>
+                        <p class="text-dark text-center mt-4 mb-0">Don't have an account? <a th:href="@{/signup}">Sign
+                            up</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+<div th:replace="~{fragments/toastr :: toastr}"></div>
+</body>
+</html>

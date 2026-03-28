@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(pageTitle=${test.name})}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="body-padding vh-100">
+    <div class="container py-custom">
+        <div th:replace="~{fragments/sidebar :: sidebar(currentTab='tests')}"></div>
+        <div class="content ps-lg-5 ps-2 pt-4 pt-lg-0">
+            <a th:href="@{/admin/test/edit/{id}(id=${test.id})}">
+                <h3 class="text-truncate">[[${test.name}]]<i class="ri-pencil-line ms-2"></i></h3>
+            </a>
+            <p class="mb-4">You have a total of [[${#lists.size(questions)}]] questions here.</p>
+            <a class="question p-4 border border-dashed rounded-0 mb-2"
+               th:href="@{/admin/question/add/{id}(id=${test.id})}">
+                <p class="text-center mb-0"><i class="ri-add-line me-2"></i>Click here to add a new question</p>
+            </a>
+            <a class="question p-4 border rounded-0 mb-2" data-aos="fade-up"
+               th:each="question, iterState : ${questions}"
+               th:href="@{/admin/question/edit/{id}(id=${question.id})}">
+                <p class="text-black mb-0">
+                    <span class="fw-medium me-3">Q.[[${iterState.count}]]</span>[[${question.name}]]
+                </p>
+            </a>
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+<div th:replace="~{fragments/toastr :: toastr}"></div>
+</body>
+</html>

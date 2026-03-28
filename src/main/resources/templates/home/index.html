@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(pageTitle='Home')}"></div>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="body-padding">
+    <section class="py-4">
+        <div class="container">
+            <div class="bg-gray p-5 rounded-0 border text-center">
+                <h6 class="text-uppercase small text-black-50">Quizard</h6>
+                <h1>Your Ultimate Online Testing Solution</h1>
+                <p class="text-grey mb-custom" style="margin-bottom: 2rem;">Sharpen your skills and measure your
+                    progress with
+                    dynamic quizzes and tests for optimal learning outcomes.</p>
+                <div class="row justify-content-around">
+                    <div class="col-lg-9">
+                        <div class="theme-circle d-flex align-items-center justify-content-around gap-0">
+                            <a class="text-center" data-bs-placement="bottom" data-bs-toggle="tooltip"
+                               th:attr="data-bs-title=${theme.name}" th:each="theme, iStat : ${themes}"
+                               th:href="@{/(theme=${theme.id})}"
+                               th:if="${iStat.index} &lt; 6">
+                                <i th:class="'ri-' + ${theme.icon} + '-fill shadow-custom'"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pb-5">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-lg-3">
+                    <div class="row g-2 theme-line">
+                        <div class="col-lg-12 col-md-4 col-6" th:each="theme : ${themes}">
+                            <a class="link-black text-truncate d-block border"
+                               th:classappend="${#strings.equals(param.theme, theme.id)} ? 'active' : ''"
+                               th:href="@{/(theme=${theme.id})}"><i
+                                    th:class="'ri-' + ${theme.icon} + '-line me-3'"></i>[[${theme.name}]]</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <form autocomplete="off" class="mb-3" method="get" th:action="@{/}">
+                        <label class="d-none" for="search"></label>
+                        <div class="form-search">
+                            <div class="input-group">
+                                <input class="form-control form-control-lg form-control-search" id="search"
+                                       name="search" placeholder="Search for a test"
+                                       required th:value="${search}" type="search"/>
+                                <button class="btn btn-primary btn-lg" type="submit">Search</button>
+                            </div>
+                            <i class="ri-search-line"></i>
+                        </div>
+                    </form>
+                    <div class="row gx-3 gy-4 mb-5">
+                        <div class="col-lg-4 col-md-4 col-6" th:each="test : ${tests}">
+                            <div data-aos="fade-up">
+                                <div class="test bg-secondary rounded-0 position-relative overflow-hidden ratio ratio-4x3 mb-3">
+                                    <img alt="" class="w-100 h-100 object-fit-cover" src=""
+                                         th:alt="${test.key.name}" th:src="@{${test.key.imagePath}}">
+                                    <div class="test-btn-wrapper">
+                                        <a class="text-white" data-bs-toggle="modal" href=""
+                                           th:data-bs-target="'#modal' + ${test.key.id}">View Test</a>
+                                    </div>
+                                </div>
+                                <h6 class="text-truncate mb-1" th:text="${test.key.name}"
+                                    th:title="${test.key.name}"></h6>
+                                <p class="small text-truncate mb-0"
+                                   th:text="${test.value} + ' Questions • ' + ${test.key.theme.name}"></p>
+                            </div>
+                            <div aria-hidden="true" class="modal fade" tabindex="-1"
+                                 th:aria-labelledby="'#modal' + ${test.key.id} + 'Label'"
+                                 th:id="'modal' + ${test.key.id}">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content border-0 rounded-0 overflow-hidden">
+                                        <div class="row g-0">
+                                            <div class="col-lg-6">
+                                                <div class="bg-dark-subtle rounded-0 h-100 ratio ratio-4x3">
+                                                    <img alt="" class="w-100 h-100 object-fit-cover" src=""
+                                                         th:alt="${test.key.name}" th:src="@{${test.key.imagePath}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 p-4">
+                                                <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
+                                                    <h5 class="text-truncate mb-0" th:text="${test.key.name}"
+                                                        th:title="${test.key.name}"></h5>
+                                                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"
+                                                            type="button"></button>
+                                                </div>
+                                                <p class="text-black text-muted" th:text="${test.key.description}"></p>
+                                                <p class="text-black d-flex align-items-center mb-2"><i
+                                                        class="ri-check-fill me-2 fs-5"
+                                                        style="color: #21A663;"></i><span>[[${test.value}]] single choice questions</span>
+                                                </p>
+                                                <p class="text-black d-flex align-items-center mb-2"><i
+                                                        class="ri-check-fill me-2 fs-5"
+                                                        style="color: #0496FF;"></i><span>1.5 minutes per question</span>
+                                                </p>
+                                                <p class="text-black d-flex align-items-center mb-0"><i
+                                                        class="ri-check-fill me-2 fs-5"
+                                                        style="color: #7300E6;"></i><span>Score 80% to pass the test</span>
+                                                </p>
+                                                <div class="d-flex gap-2 mt-4">
+                                                    <a class="btn btn-block btn-primary w-100"
+                                                       th:href="@{/user/test/{id}(id=${test.key.id})}">Start</a>
+                                                    <button class="btn btn-block btn-secondary w-100"
+                                                            data-bs-dismiss="modal">Close
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <nav th:if="${pages > 1}">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{/(page=1, search=${search})}"
+                                   th:if="${currentPage > 1}"><i class="ri-skip-left-line"></i></a>
+                                <a class="page-link" th:unless="${currentPage > 1}"><i
+                                        class="ri-skip-left-line"></i></a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{/(page=${currentPage - 1}, search=${search})}"
+                                   th:if="${currentPage > 1}"><i class="ri-arrow-left-s-line"></i></a>
+                                <a class="page-link" th:unless="${currentPage > 1}"><i class="ri-arrow-left-s-line"></i></a>
+                            </li>
+                            <li class="page-item" th:classappend="${currentPage == i} ? 'active' : ''"
+                                th:each="i: ${#numbers.sequence(1, pages)}">
+                                <a class="page-link" th:href="@{/(page=${i}, search=${search})}"
+                                   th:text="${i}"></a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{/(page=${currentPage + 1}, search=${search})}"
+                                   th:if="${currentPage < pages}"><i class="ri-arrow-right-s-line"></i></a>
+                                <a class="page-link" th:unless="${currentPage < pages}"><i
+                                        class="ri-arrow-right-s-line"></i></a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{/(page=${pages}, search=${search})}"
+                                   th:if="${currentPage < pages}"><i class="ri-skip-right-line"></i></a>
+                                <a class="page-link" th:unless="${currentPage < pages}"><i
+                                        class="ri-skip-right-line"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/scripts :: scripts}"></div>
+<div th:replace="~{fragments/toastr :: toastr}"></div>
+</body>
+</html>
